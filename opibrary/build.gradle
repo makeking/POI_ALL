@@ -1,0 +1,57 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    task makeJar(type: Copy) {
+        //删除存在的
+        delete 'build/libs/myjar.jar'
+        //设置拷贝的文件
+        from('build/intermediates/bundles/debug/')
+        //打进jar包后的文件目录
+        into('build/libs/')
+        //将classes.jar放入build/libs/目录下
+        //include ,exclude参数来设置过滤
+        //（我们只关心classes.jar这个文件）
+        include('classes.jar')
+        //重命名
+        rename ('classes.jar', 'myjar.jar')
+    }
+
+    makeJar.dependsOn(build)
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation files('libs\\wstx-asl-3.2.1.jar')
+    implementation 'org.apache.poi:poi-scratchpad:3.15'
+    implementation 'org.apache.poi:poi:3.15'
+    implementation('org.apache.poi:poi-ooxml:3.15', {
+        exclude group: 'org.apache.xmlbeans', module: 'xmlbeans'
+    })
+    implementation('org.apache.commons:commons-compress:1.18')
+    implementation 'net.sourceforge.jexcelapi:jxl:2.6.12'
+    implementation group: 'org.apache.xmlbeans', name: 'xmlbeans', version: '3.1.0'
+
+}

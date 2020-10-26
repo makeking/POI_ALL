@@ -1,0 +1,90 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "30.0.2"
+    defaultConfig {
+        applicationId "teprinciple.yang.list2excel"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+//    }
+
+}
+
+/*
+
+	<dependency>
+		<groupId>org.apache.poi</groupId>
+		<artifactId>poi</artifactId>
+		<version>3.17</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.poi</groupId>
+		<artifactId>poi-ooxml</artifactId>
+		<version>3.17</version>
+	</dependency>
+	<dependency>
+	  <groupId>org.apache.poi</groupId>
+	  <artifactId>poi-scratchpad</artifactId>
+	  <version>3.17</version>
+	</dependency>
+       <dependency>
+	  <groupId>org.apache.poi</groupId>
+	  <artifactId>poi-ooxml-schemas</artifactId>
+	  <version>3.17</version>
+	</dependency>
+	<dependency>
+	  <groupId>org.apache.poi</groupId>
+	  <artifactId>ooxml-schemas</artifactId>
+	  <version>1.3</version>
+	</dependency>
+
+
+*/
+dependencies {
+//    implementation files('C:/Program Files/Java/jdk1.8.0_261/jre/lib/rt.jar')
+//   provided files('/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/jre/lib/rt.jar')
+    implementation 'javax.xml.stream:stax-api:1.0-2'
+//    implementation 'com.fasterxml:aalto-xml:1.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:2.0.2'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation files('libs\\wstx-asl-3.2.1.jar')
+//    implementation project(path: ':opibrary')
+    //    implementation project(path: ':poishadow')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'org.apache.xmlbeans', module: 'xmlbeans'
+    })
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:25.1.0'
+    implementation 'org.apache.poi:poi-scratchpad:3.15'
+
+    implementation 'org.apache.poi:poi:3.15'
+    implementation('org.apache.poi:poi-ooxml:3.15', {
+        exclude group: 'org.apache.xmlbeans', module: 'xmlbeans'
+    })
+    implementation('org.apache.commons:commons-compress:1.18')
+    implementation 'net.sourceforge.jexcelapi:jxl:2.6.12'
+    testImplementation 'junit:junit:4.12'
+    implementation group: 'org.apache.xmlbeans', name: 'xmlbeans', version: '3.1.0'
+
+    /*
+    todo :
+         * */
+//    implementation 'org.apache.poi:poi-ooxml-schemas:3.15'
+//    implementation 'org.apache.poi:ooxml-schemas:1.3'
+}

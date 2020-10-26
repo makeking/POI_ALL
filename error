@@ -1,0 +1,5 @@
+出现的问题：
+1. 如果想要使用 javax包的时候，可以在build.gradle 添加
+      implementation files ('C:/Program Files/Java/jdk1.8.0_261/jre/lib/rt.jar')
+  导致的错误：
+        只可以在Android O --》Api 26 的时候进行使用 。
