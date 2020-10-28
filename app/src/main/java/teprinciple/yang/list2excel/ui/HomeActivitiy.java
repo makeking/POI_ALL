@@ -1,6 +1,7 @@
-package teprinciple.yang.list2excel;
+package teprinciple.yang.list2excel.ui;
 
 import android.Manifest;
+import android.content.res.AssetManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -10,16 +11,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.tom_roush.pdfbox.cos.COSArray;
+import com.tom_roush.pdfbox.cos.COSBase;
+import com.tom_roush.pdfbox.cos.ICOSVisitor;
+import com.tom_roush.pdfbox.pdmodel.graphics.color.PDColor;
+
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFClientAnchor;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import teprinciple.yang.list2excel.exection.SheetExcetion;
+import teprinciple.yang.list2excel.R;
+import teprinciple.yang.list2excel.bean.Student;
+import teprinciple.yang.list2excel.utils.poi.PoiExccelUtils;
+import teprinciple.yang.list2excel.utils.poi.PoiPedUtils;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
@@ -92,14 +102,14 @@ public class HomeActivitiy extends AppCompatActivity {
         for (int i = 0; i < students.size(); i++) {
             Student student = students.get(i);
             ArrayList<Object> beanList = new ArrayList<>();
-            beanList.add(student.id);
-            beanList.add(student.name);
-            beanList.add(student.sex);
-            beanList.add(student.age);
-            beanList.add(student.classNo);
-            beanList.add(student.math);
-            beanList.add(student.english);
-            beanList.add(student.chinese);
+            beanList.add(student.getId());
+            beanList.add(student.getName());
+            beanList.add(student.getSex());
+            beanList.add(student.getAge());
+            beanList.add(student.getClassNo());
+            beanList.add(student.getMath());
+            beanList.add(student.getEnglish());
+            beanList.add(student.getChinese());
             recordList.add(beanList);
         }
         return recordList;
@@ -128,10 +138,26 @@ public class HomeActivitiy extends AppCompatActivity {
      *
      * @param view
      */
-    public void exportDoc(View view) {
+    public void exportDoc(View view) throws Exception {
+//        File file = new File(getSDPath() + "/Record");
+//        makeDir(file);
+//        String fileName = file.getPath() + "/test.doc";
+////        PoiDocUtils.writerTitleToDoc("This is a Title", fileName);
+//        PoiDocUtils.writeFontToDoc("this is a demo ， use test doc file is exit。", fileName);
     }
 
+    /**
+     * 导出pdf 文件
+     *
+     * @param view
+     */
     public void exportPdf(View view) {
-
+        File file = new File(getSDPath() + "/Record");
+        makeDir(file);
+        String fileName = file.getPath() + "/demo.pdf";
+        AssetManager assetManager = getAssets();
+//        PoiPedUtils.exportPdf(assetManager,fileName);
+//        PoiPedUtils.exportTitlePdf(fileName,"test",14,20,30,10,0,30);
     }
+
 }

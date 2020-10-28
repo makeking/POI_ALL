@@ -1,4 +1,4 @@
-package teprinciple.yang.list2excel;
+package teprinciple.yang.list2excel.utils.poi;
 
 import android.support.annotation.NonNull;
 
@@ -246,7 +246,7 @@ public class PoiExccelUtils {
         if (maps.size() <= 0) {
             throw new NumberExcetion("You must  Incoming one or more map @param(Map<String,CellRangeAddress>), Otherwise, this exception will be reported !!!");
         }
-        if (leftSize != null || leftSize.length != 2) {
+        if (leftSize == null || leftSize.length != 2) {
             throw new NumberExcetion("You must  Incoming zero or tow int number, Otherwise, this exception will be reported !!!");
         }
         //1. 设置表格

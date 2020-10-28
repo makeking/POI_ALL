@@ -1,7 +1,6 @@
-package teprinciple.yang.list2excel;
+package teprinciple.yang.list2excel.ui;
 
 import android.Manifest;
-import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
@@ -13,12 +12,12 @@ import android.widget.Toast;
 
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import jxl.demo.Write;
-import jxl.write.WriteException;
+import teprinciple.yang.list2excel.utils.jxl.ExcelUtils;
+import teprinciple.yang.list2excel.R;
+import teprinciple.yang.list2excel.bean.Student;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
@@ -38,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         //模拟数据集合
         students = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
-            students.add(new Student("小红" + i, "女", 12, 1 + i, "一班", 85,77,98));
-            students.add(new Student("小明" + i, "男", 14, 2 + i, "二班", 65,57,100));
+            students.add(new Student("小红" + i, "女", 12, 1 + i, "一班", 85, 77, 98));
+            students.add(new Student("小明" + i, "男", 14, 2 + i, "二班", 65, 57, 100));
         }
     }
 
@@ -86,14 +85,14 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < students.size(); i++) {
             Student student = students.get(i);
             ArrayList<Object> beanList = new ArrayList<Object>();
-            beanList.add(student.id);
-            beanList.add(student.name);
-            beanList.add(student.sex);
-            beanList.add(student.age);
-            beanList.add(student.classNo);
-            beanList.add(student.math);
-            beanList.add(student.english);
-            beanList.add(student.chinese);
+            beanList.add(student.getId());
+            beanList.add(student.getName());
+            beanList.add(student.getSex());
+            beanList.add(student.getAge());
+            beanList.add(student.getClassNo());
+            beanList.add(student.getMath());
+            beanList.add(student.getEnglish());
+            beanList.add(student.getChinese());
             recordList.add(beanList);
         }
         return recordList;
