@@ -21,6 +21,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.xssf.usermodel.charts.XSSFCategoryAxis;
 import org.apache.poi.xssf.usermodel.charts.XSSFChartLegend;
 import org.apache.poi.xssf.usermodel.charts.XSSFValueAxis;
+import org.w3c.dom.Document;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -179,6 +180,7 @@ public class PoiExccelUtils {
         FileOutputStream fileOut = null;
         try {
             ByteArrayOutputStream byteArrayOut = new ByteArrayOutputStream();
+            
             // todo java 的方式
 //            bufferImg = ImageIO.read(new File(pngPath));
 //            ImageIO.write(bufferImg, "PNG", byteArrayOut);
